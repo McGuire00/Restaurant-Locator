@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Map.css";
 
 import mapboxgl from "mapbox-gl";
@@ -10,13 +10,15 @@ function Map() {
   //   mapboxgl.accessToken = "YOUR_MAPBOX_ACCESS_TOKEN";
 
   // mapboxgl.accessToken = "pk.eyJ1IjoiZGVyb25tYWMiLCJhIjoiY2tra2RydGRmMDhkaDJvcHB5bW45NmF3bSJ9.FtCWlzl41UQWKoIqIfE29w";
-  
+
   // const map = new mapboxgl.Map({
   //   container: "map", // container ID
   //   style: "mapbox://styles/mapbox/streets-v11", // style URL
   //   center: [-74.5, 40], // starting position [lng, lat]
   //   zoom: 9, // starting zoom
   // });
+
+  useEffect(() => {}, []);
 
   return (
     <div>
