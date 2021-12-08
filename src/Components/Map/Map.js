@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./Map.css";
 
 import mapboxgl from "mapbox-gl";
@@ -7,28 +7,35 @@ import "mapbox-gl/dist/mapbox-gl.css";
 // import { Map } from "../../Util/stores";
 
 function Map() {
-  //   mapboxgl.accessToken = "YOUR_MAPBOX_ACCESS_TOKEN";
+  mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
-  // mapboxgl.accessToken = "pk.eyJ1IjoiZGVyb25tYWMiLCJhIjoiY2tra2RydGRmMDhkaDJvcHB5bW45NmF3bSJ9.FtCWlzl41UQWKoIqIfE29w";
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+  const [lng, setLng] = useState(-95.358421);
+  const [lat, setLat] = useState(29.749907);
+  const [zoom, setZoom] = useState(10);
 
-  // const map = new mapboxgl.Map({
-  //   container: "map", // container ID
-  //   style: "mapbox://styles/mapbox/streets-v11", // style URL
-  //   center: [-74.5, 40], // starting position [lng, lat]
-  //   zoom: 9, // starting zoom
-  // });
-
-  useEffect(() => {}, []);
+  useEffect(() => {
+    // if (map.current) return; // initialize map only once
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: "mapbox://styles/mapbox/light-v10",
+      center: [lng, lat],
+      zoom: zoom,
+      scrollZoom: false
+    });
+    console.log(map);
+  });
 
   return (
     <div>
-      <div class="sidebar">
-        <div class="heading">
+      <div className="sidebar">
+        <div className="heading">
           <h1>Our locations</h1>
         </div>
-        <div id="listings" class="listings"></div>
+        <div id="listings" className="listings"></div>
       </div>
-      <div id="map" class="map"></div>
+      <div id="map" className="map"></div>
     </div>
   );
 }
