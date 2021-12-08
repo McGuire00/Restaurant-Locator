@@ -1839,3 +1839,7 @@ export const stores = {
     },
   ],
 };
+
+stores.features.forEach(function (store, i) {
+  store.properties.id = i;
+});
