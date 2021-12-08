@@ -22,7 +22,8 @@ function Map() {
       style: "mapbox://styles/mapbox/light-v10",
       center: [lng, lat],
       zoom: zoom,
-      scrollZoom: false,
+      maxZoom: 15,
+      minZoom: 9,
     });
   });
 
