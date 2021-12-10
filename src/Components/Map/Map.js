@@ -21,7 +21,7 @@ function Map() {
       container: "map",
       style: "mapbox://styles/mapbox/light-v10",
       center: [lng, lat],
-      zoom: zoom,
+      zoom: 10,
       maxZoom: 15,
       minZoom: 9,
     });
