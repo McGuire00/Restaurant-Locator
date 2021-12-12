@@ -383,7 +383,7 @@ export const stores = {
       },
       properties: {
         Name: "Earthy Goodness Vegan Icecream",
-        Address: "Earthy Goodness Vegan Ice Cream",
+        Address: "4213 Emancipation Ave",
         city: "Houston",
         postalCode: 77004,
         phoneFormatted: "(832) 286-5426",
