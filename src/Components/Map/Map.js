@@ -79,7 +79,7 @@ function Map() {
     <div>
       <div className="sidebar">
         <div className="heading">
-          <h1>Restaurants</h1>
+          <h1>Black Owned Restaurants</h1>
         </div>
         <div id="listings" className="listings"></div>
       </div>
