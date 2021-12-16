@@ -74,6 +74,25 @@ function Map() {
       }
     }
   }
+  function flyToStore(currentFeature) {
+    map.flyTo({
+      center: currentFeature.geometry.coordinates,
+      zoom: 15,
+    });
+  }
+
+  function createPopUp(currentFeature) {
+    const popUps = document.getElementsByClassName("mapboxgl-popup");
+    /** Check if there is already a popup on the map and if so, remove it */
+    if (popUps[0]) popUps[0].remove();
+
+    const popup = new mapboxgl.Popup({ closeOnClick: false })
+      .setLngLat(currentFeature.geometry.coordinates)
+      .setHTML(
+        `<h3>Sweetgreen</h3><h4>${currentFeature.properties.address}</h4>`
+      )
+      .addTo(map);
+  }
 
   return (
     <div>
