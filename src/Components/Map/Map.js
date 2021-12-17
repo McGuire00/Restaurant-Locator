@@ -72,6 +72,19 @@ function Map() {
           Math.round(store.properties.distance * 100) / 100;
         details.innerHTML += `<div><strong>${roundedDistance} miles away</strong></div>`;
       }
+      link.addEventListener("click", function () {
+        for (const feature of stores.features) {
+          if (this.id === `link-${feature.properties.id}`) {
+            flyToStore(feature);
+            createPopUp(feature);
+          }
+        }
+        const activeItem = document.getElementsByClassName("active");
+        if (activeItem[0]) {
+          activeItem[0].classList.remove("active");
+        }
+        this.parentNode.classList.add("active");
+      });
     }
   }
   function flyToStore(currentFeature) {
