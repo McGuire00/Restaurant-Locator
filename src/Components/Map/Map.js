@@ -44,6 +44,36 @@ function Map() {
     });
   });
 
+  useEffect(() => {
+    map.current.on("click", (event) => {
+      /* Determine if a feature in the "locations" layer exists at that point. */
+      const features = map.queryRenderedFeatures(event.point, {
+        layers: ["locations"],
+      });
+
+      /* If it does not exist, return */
+      if (!features.length) return;
+
+      const clickedPoint = features[0];
+
+      /* Fly to the point */
+      flyToStore(clickedPoint);
+
+      /* Close all other popups and display popup for clicked store */
+      createPopUp(clickedPoint);
+
+      /* Highlight listing in sidebar (and remove highlight for all other listings) */
+      const activeItem = document.getElementsByClassName("active");
+      if (activeItem[0]) {
+        activeItem[0].classList.remove("active");
+      }
+      const listing = document.getElementById(
+        `listing-${clickedPoint.properties.id}`
+      );
+      listing.classList.add("active");
+    });
+  });
+
   function buildLocationList(stores) {
     for (const store of stores.features) {
       /* Add a new listing section to the sidebar. */
